@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 
-const observable = new Observable((subscriber)=>{
+const observable = new Observable<number>((subscriber)=>{
     // What do you want to send to the subscriber
     subscriber.next(10);
     subscriber.next(11);
@@ -8,10 +8,10 @@ const observable = new Observable((subscriber)=>{
 })
 
 const observer = {
-    next: (value) => {
+    next: (value: number) => {
         console.log('Got value from observer ' + value);
     },
-    error: (err) => {
+    error: (err: any) => {
         console.log('Observer got an error ' + err)
     },
     complete: () => {
@@ -20,3 +20,5 @@ const observer = {
 }
 
 observable.subscribe(observer);
+
+console.log()
